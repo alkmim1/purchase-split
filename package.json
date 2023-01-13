@@ -1,0 +1,29 @@
+{
+  "name": "purchase-split",
+  "version": "1.0.0",
+  "description": "split shopping amoung the users",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alkmim1/purchase-split.git"
+  },
+  "author": "alkmim-gmascb",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/alkmim1/purchase-split/issues"
+  },
+  "homepage": "https://github.com/alkmim1/purchase-split#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20",
+    "swagger-autogen": "^2.22.0",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
