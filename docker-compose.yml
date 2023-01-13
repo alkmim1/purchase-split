@@ -13,6 +13,8 @@ services:
     build:
       context: .
     restart: always
+    volumes:
+      - .:/usr/app
     ports:
       - "4003:4003"
     environment:
