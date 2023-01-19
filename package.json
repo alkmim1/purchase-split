@@ -20,9 +20,10 @@
   "homepage": "https://github.com/alkmim1/purchase-split#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.8.3",
     "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
     "swagger-autogen": "^2.22.0",
     "swagger-ui-express": "^4.6.0"
   }
