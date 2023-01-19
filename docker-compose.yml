@@ -20,8 +20,6 @@ services:
       - .:/usr/app
     ports:
       - "4003:4003"
-    environment:
-      - MONGO_URL=mongodb://mongo:27017/purchase-list
     stdin_open: true
     tty: true
     depends_on:
