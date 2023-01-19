@@ -1,8 +1,14 @@
 class Tables {
     static async init(dbConnection) {
         this.connection = dbConnection;
+        await this.createDatabase().then();
         await this.createTableUser().then();
     }
+
+    static async createDatabase () {
+        const sql = 'CREATE DATABASE purchase_split';
+        await this.query(sql);
+    };
 
     static async createTableUser() {
         const sql = 'CREATE TABLE if not exists users (id SERIAL PRIMARY KEY, provider varchar(255) NOT NULL, uuid varchar(255), ' +
