@@ -1,14 +1,15 @@
 import express from 'express';
+import {MongoHelper} from './infra/db.js';
+import {router} from './routes.js';
+
 const app = express()
 const port = 4003
-
-/* Routes */
-import { router } from './routes.js';
-import { dbConnection } from './infra/db.js';
 
 /* Middlewares */
 app.use(router)
 
-dbConnection().then(() => app.listen(port, () => {
-    console.log(`App listening on port ${port}`)
-})).catch(err => new Error(err));
+MongoHelper.connect()
+    .then(async () => {
+        app.listen(port, () => console.log(`Server running at http://localhost:${port}`))
+    })
+    .catch(console.error)
