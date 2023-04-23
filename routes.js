@@ -1,15 +1,18 @@
-import { Router } from 'express';
-import bodyParser from 'body-parser';
-import { CartsController } from "./controllers/carts_controller.js";
+const cartsController = require('./controllers/carts_controller');
+const usersController = require('./controllers/users_controller');
+const Router = require('express');
 
 const router = Router();
-
-const jsonParser = bodyParser.json()
+const cartsValidator = require('./middlewares/carts_request_validator');
+const usersValidator = require('./middlewares/users_request_validator');
 
 router.get('/',(req, res) => {
     res.status(200);
     res.json("Success!");
 })
-router.post('/carts', jsonParser, CartsController.create)
+router.post('/carts', cartsValidator, cartsController.create)
+router.get('/carts', cartsController.show)
+router.post('/users', usersValidator, usersController.create)
+router.get('/users', usersController.show)
 
-export { router };
+module.exports = router;

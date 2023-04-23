@@ -1,12 +1,12 @@
-const cartsService = require('../services/carts_service');
+const usersService = require('../services/users_service');
 
-class CartsController {
+class UsersController {
 
     async create(req, res) {
         const {body} = req;
         let result;
         try {
-            result = await cartsService.create(body);
+            result = await usersService.create(body);
         } catch (err) {
             return res.status(500).send(err);
         }
@@ -18,4 +18,4 @@ class CartsController {
     }
 }
 
-module.exports = new CartsController;
+module.exports = new UsersController;

@@ -1,6 +1,6 @@
-import {MongoClient} from 'mongodb'
+const {MongoClient} = require('mongodb');
 
-export const MongoHelper = {
+const MongoHelper = {
     client: null,
     uri: null,
 
@@ -18,3 +18,5 @@ export const MongoHelper = {
         return this.client.db().collection(name)
     }
 }
+
+module.exports = MongoHelper;

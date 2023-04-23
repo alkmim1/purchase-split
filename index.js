@@ -1,11 +1,13 @@
-import express from 'express';
-import {MongoHelper} from './infra/db.js';
-import {router} from './routes.js';
+const express = require('express');
+const router = require('./routes');
+const MongoHelper = require('./infra/db');
 
 const app = express()
 const port = 4003
 
 /* Middlewares */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(router)
 
 MongoHelper.connect()

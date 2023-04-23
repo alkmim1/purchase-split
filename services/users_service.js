@@ -1,11 +1,11 @@
 const MongoHelper = require('../infra/db');
 
-class CartsService {
+class UsersService {
 
     async create(props) {
-        const cartsCollection = MongoHelper.getCollection('carts');
+        const usersCollection = MongoHelper.getCollection('users');
         try {
-            await cartsCollection.insertOne(props);
+            await usersCollection.insertOne(props);
             return props;
         } catch (err) {
             console.log(err);
@@ -13,4 +13,4 @@ class CartsService {
     }
 }
 
-module.exports = new CartsService;
+module.exports = new UsersService;
