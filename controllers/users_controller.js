@@ -1,4 +1,5 @@
 const usersService = require('../services/users_service');
+const googleOAuth = require('../services/google/google_oauth');
 
 class UsersController {
 
@@ -15,6 +16,12 @@ class UsersController {
 
     async show(req, res) {
         return res.status(200).send('Ok');
+    }
+
+    async login(req, res) {
+        const {body} = req;
+        // return res.status(200).send(body);
+        return googleOAuth.googleLogin(req, res)
     }
 }
 
