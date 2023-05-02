@@ -15,4 +15,7 @@ router.get('/carts', cartsController.show)
 router.post('/users', usersValidator, usersController.create)
 router.get('/users', usersController.show)
 
+// User Login
+router.post('/login', usersController.login)
+
 module.exports = router;
