@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon -L index.js",
+    "dev": "node swagger-config.js && nodemon -L index.js",
     "test": "jest --detectOpenHandles"
   },
   "repository": {

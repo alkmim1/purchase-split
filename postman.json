@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "e6902f31-1ae8-46fb-a7c3-492ff2dced77",
+		"name": "Split-Bill",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12277068"
+	},
+	"item": [
+		{
+			"name": "Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Festinha 3\",\n    \"userId\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Cart",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Festinha\",\n    \"userId\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "644c5b4d881a514dcefd5310"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bill\": {\n        \"name\": \"Cerveja\",\n        \"value\": \"50.00\",\n        \"userId\": 1\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts/:id/add_product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts",
+						":id",
+						"add_product"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "644c62c6dcbf7891ad7b88ce"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bill\": {\n        \"name\": \"Maminha\",\n        \"value\": \"80.00\",\n        \"userId\": 1\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts/:id/remove_product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts",
+						":id",
+						"remove_product"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "644c5b4d881a514dcefd5310"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alkmim\",\n    \"email\": \"alkmim@splitbill.com\",\n    \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts/balance?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts",
+						"balance"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
