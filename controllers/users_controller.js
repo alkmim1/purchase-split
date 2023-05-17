@@ -1,5 +1,7 @@
 const usersService = require("../services/users_service");
 const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const jwtSecret = "a4bbc339-72f1-4095-80eb-f10e5709a5ef";
 
 class UsersController {
   async create(req, res) {
@@ -8,7 +10,7 @@ class UsersController {
     try {
       result = await usersService.create(body);
     } catch (err) {
-      return res.status(500).send(err);
+      return res.status(result.status).send(result.message);
     }
     return res.status(200).send(result);
   }
@@ -16,10 +18,21 @@ class UsersController {
   async login(req, res) {
     const sessionUser = await usersService.findOne(req.body.email);
     if (!!!sessionUser || sessionUser.password !== req.body.password) {
-      res.status(401).send("E-mail or password does not match");
+      return res.status(401).send("E-mail or password does not match");
     }
-    req.user = { ...sessionUser, password: null };
-    console.log(req.user);
+    const maxAge = 3 * 60 * 60;
+    const token = jwt.sign(
+      { id: sessionUser._id, name: sessionUser.name, email: sessionUser.email },
+      jwtSecret,
+      {
+        expiresIn: maxAge,
+      }
+    );
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+    });
+    console.log(`User Authenticated: ${JSON.stringify({ id: sessionUser._id, name: sessionUser.name, email: sessionUser.email })}`);
     return res.status(200).send("Success on Authentication.");
   }
 
@@ -35,7 +48,19 @@ class UsersController {
       };
       await usersService.create(userProps);
     }
-    req.user = { ...sessionUser, password: null };
+    const maxAge = 3 * 60 * 60;
+    const token = jwt.sign(
+      { id: sessionUser._id, name: sessionUser.name, email: sessionUser.email },
+      jwtSecret,
+      {
+        expiresIn: maxAge,
+      }
+    );
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+    });
+    console.log(`Google User Authenticated: ${JSON.stringify({ id: sessionUser._id, name: sessionUser.name, email: sessionUser.email })}`);
     return res.status(200).send("Success on Authentication.");
   }
 }
