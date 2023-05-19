@@ -29,6 +29,7 @@ router.put(
 );
 router.get("/carts", cartsController.getCurrentUserCarts);
 router.get("/carts/balance", cartsController.getBalance);
+router.get("/carts/:id", cartsController.show);
 router.post("/users", usersValidator, usersController.create);
 
 // Google Login

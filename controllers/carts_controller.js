@@ -31,7 +31,7 @@ class CartsController {
       body.id = req.params.id;
       result = await cartsService.addProduct(body);
     } catch (err) {
-      return res.status(500).send(err);
+      return res.status(500).send(JSON.stringify(err));
     }
     return res.status(result.status).send(result.data);
   }
@@ -52,7 +52,7 @@ class CartsController {
     let result;
     try {
       const userId = req.query.userId;
-      result = await cartsService.getBalance(+userId);
+      result = await cartsService.getBalance(userId);
     } catch (err) {
       return res.status(500).send(err);
     }
@@ -63,7 +63,18 @@ class CartsController {
     let result;
     try {
       const userId = req.query.userId;
-      result = await cartsService.getCurrentUserCarts(+userId);
+      result = await cartsService.getCurrentUserCarts(userId);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+    return res.status(result.status).send(result.data);
+  }
+
+  async show(req, res) {
+    let result;
+    try {
+      const id = req.params.id;
+      result = await cartsService.findOne(id);
     } catch (err) {
       return res.status(500).send(err);
     }

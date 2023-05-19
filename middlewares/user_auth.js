@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "a4bbc339-72f1-4095-80eb-f10e5709a5ef";
-const allowedRoutes = ["/users", "/login", "login-google"];
+const allowedRoutes = ["/users", "/login", "/login-google"];
 
 const userAuth = (req, res, next) => {
-  const token = req.cookies.jwt;
+  let token = req.headers.authorization;
   if (token) {
+    token = token.replace("Bearer ", "");
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
       if (err) {
         return res.status(401).json({ message: "Unauthorized" });

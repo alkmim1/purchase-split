@@ -1,5 +1,6 @@
 const MongoHelper = require("../infra/db");
 const { ObjectId } = require("mongodb");
+const usersService = require("./users_service");
 
 class CartsService {
   async create(props) {
@@ -48,6 +49,18 @@ class CartsService {
       });
       const results = await cartsPromise;
       return { data: results, status: 200 };
+    } catch (err) {
+      return { data: err, status: 500 };
+    }
+  }
+
+  async findOne(id) {
+    const cartsCollection = MongoHelper.getCollection("carts");
+    const oId = ObjectId(id);
+    try {
+      const cart = await cartsCollection.findOne({ _id: oId });
+      if (!!!cart) return { data: "Not found", status: 404 };
+      return { data: cart, status: 200 };
     } catch (err) {
       return { data: err, status: 500 };
     }
@@ -109,15 +122,18 @@ class CartsService {
     const cartsCollection = MongoHelper.getCollection("carts");
     const oId = ObjectId(props.id);
     const cart = await cartsCollection.findOne({ _id: oId });
+    if (!!!cart) return { data: "Cart not found.", status: 404 };
     try {
-      if (cart.products && Array.isArray(cart.products)) {
+      if (cart?.products && Array.isArray(cart?.products)) {
+        const user = await usersService.findById(ObjectId(props.bill.userId));
+        props.bill.userName = user?.name;
         const index = cart.products.findIndex(
           (product) =>
             product.name === props?.bill?.name &&
             product.value === props?.bill?.value &&
             product.userId === props?.bill?.userId
         );
-        if (index > 0) {
+        if (index >= 0) {
           return { data: "Product already added!", status: 422 };
         } else {
           cart.products.push(props.bill);
@@ -131,7 +147,7 @@ class CartsService {
       );
       return { data: cart, status: 200 };
     } catch (err) {
-      return { data: err, status: 500 };
+      return { data: JSON.stringify(err), status: 500 };
     }
   }
 
@@ -147,7 +163,7 @@ class CartsService {
             product.value === props?.bill?.value &&
             product.userId === props?.bill?.userId
         );
-        if (indexToRemove > 0) {
+        if (indexToRemove >= 0) {
           cart.products.splice(indexToRemove, 1);
         } else {
           return { data: "Product not found!", status: 404 };

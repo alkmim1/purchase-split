@@ -1,5 +1,4 @@
 const MongoHelper = require("../infra/db");
-const crypto = require("crypto");
 
 class UsersService {
   async create(props) {
@@ -7,7 +6,7 @@ class UsersService {
     try {
       const userFound = await usersCollection.findOne({ email: props.email });
       if (!!userFound) {
-        return { status: 422, message: 'You already have an account.' };
+        return { status: 422, message: "You already have an account." };
       }
       const userProps = {
         name: props?.name,
@@ -16,7 +15,7 @@ class UsersService {
         password: props?.password,
       };
       await usersCollection.insertOne(userProps);
-      return { status: 200, message: 'User created' };
+      return { status: 200, message: "User created" };
     } catch (err) {
       return { status: 500, message: JSON.stringify(err) };
     }
@@ -26,6 +25,15 @@ class UsersService {
     const usersCollection = MongoHelper.getCollection("users");
     try {
       return await usersCollection.findOne({ email });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async findById(id) {
+    const usersCollection = MongoHelper.getCollection("users");
+    try {
+      return await usersCollection.findOne({ _id: id });
     } catch (err) {
       console.log(err);
     }
