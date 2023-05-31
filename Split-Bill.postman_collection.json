@@ -31,11 +31,16 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Festinha 3\",\n    \"userId\": 1\n}"
+					"raw": "{\n    \"name\": \"Festinha 2\",\n    \"userId\": \"6464df963459e5e9c56e8800\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:4003/carts",
@@ -96,11 +101,16 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"bill\": {\n        \"name\": \"Cerveja\",\n        \"value\": \"50.00\",\n        \"userId\": 1\n    }\n}"
+					"raw": "{\n    \"bill\": {\n        \"name\": \"Maminha\",\n        \"value\": \"80.00\",\n        \"userId\": \"6464df963459e5e9c56e8800\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://localhost:4003/carts/:id/add_product",
@@ -117,7 +127,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "644c62c6dcbf7891ad7b88ce"
+							"value": "64679c66c93428196930360c"
 						}
 					]
 				}
@@ -132,6 +142,11 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
 						"type": "text"
 					}
 				],
@@ -154,7 +169,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "644c5b4d881a514dcefd5310"
+							"value": "64679c66c93428196930360c"
 						}
 					]
 				}
@@ -191,6 +206,65 @@
 			"response": []
 		},
 		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"rafael.alkmim7@gmail.com\",\n    \"password\": \"94480aab-b154-4844-a9c8-eb27fddf089b\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Google",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth/google",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"google"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Carts",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -202,6 +276,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -209,7 +288,7 @@
 					"raw": "{\n    \"id\": 1\n}"
 				},
 				"url": {
-					"raw": "http://localhost:4003/carts?userId=1",
+					"raw": "http://localhost:4003/carts?userId=6464df963459e5e9c56e8800",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -221,7 +300,51 @@
 					"query": [
 						{
 							"key": "userId",
-							"value": "1"
+							"value": "6464df963459e5e9c56e8800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4003/carts/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"carts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "64679c66c93428196930360c"
 						}
 					]
 				}
@@ -240,14 +363,19 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjRkZjk2MzQ1OWU1ZTljNTZlODgwMCIsIm5hbWUiOiJSYWZhZWwgQWxrbWltIiwiZW1haWwiOiJyYWZhZWwuYWxrbWltN0BnbWFpbC5jb20iLCJpYXQiOjE2ODQ1MTE3NzYsImV4cCI6MTY4NDUyMjU3Nn0.URpM7heyk_gs1EjRSqxbdUpGQHqKQMYUWJkIf1YFg18",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 1\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:4003/carts/balance?userId=1",
+					"raw": "http://localhost:4003/carts/balance?userId=6464df963459e5e9c56e8800",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -260,7 +388,7 @@
 					"query": [
 						{
 							"key": "userId",
-							"value": "1"
+							"value": "6464df963459e5e9c56e8800"
 						}
 					]
 				}

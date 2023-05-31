@@ -7,7 +7,7 @@ const doc = {
     description: "Documentação da Aplicação Split-Bill",
   },
   host: "localhost:4003",
-  basePath: "/",
+  basePath: "/doc",
   schemes: ["https"],
   consumes: ["application/json"],
   produces: ["application/json"],

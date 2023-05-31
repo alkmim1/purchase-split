@@ -20,7 +20,7 @@ const userAuth = (req, res, next) => {
   } else {
     if (
       (req.method === "POST" && allowedRoutes.includes(req.path)) ||
-      req.path === "/"
+      req.path === "/" || req.path.includes("/doc")
     ) {
       next();
     } else {
